@@ -1,0 +1,12 @@
+export 'audit/audit.dart';
+export 'course/course.dart';
+export 'exam/exam.dart';
+export 'report/report.dart';
+export 'sallary/sallary.dart';
+export 'inventory/inventory.dart';
+export 'lkm/lkm.dart';
+export 'statistic/statistic.dart';
+export 'status/status.dart';
+export 'ticket/ticket.dart';
+export 'user/user.dart';
+export 'warehouse/warehouse.dart';
