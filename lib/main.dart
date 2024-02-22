@@ -7,9 +7,7 @@ void main() async {
 
   CustomNotification.initialize();
 
-  await dotenv.load(
-    fileName: ".env",
-  );
+  await dotenv.load();
 
   runApp(const MyApp());
 }

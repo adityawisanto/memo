@@ -89,6 +89,20 @@ class MerchantTerminal extends StatelessWidget {
             ),
           ],
         ),
+        GestureDetector(
+          onTap: () => CustomNavigation.intentWithData(
+            context,
+            MerchantM3sPage.routeName,
+            merchantArgument,
+          ),
+          child: Text(
+            "Lihat M3S Mobile",
+            style: CustomTextStyle.bold(
+              12.sp,
+              color: CustomColorStyle.bluePrimary,
+            ),
+          ),
+        ),
       ],
     );
   }

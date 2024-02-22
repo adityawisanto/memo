@@ -19,6 +19,15 @@ class RouteGenerator {
         return MaterialPageRoute(builder: (_) => const SummaryPage());
       case CourseSearchPage.routeName:
         return MaterialPageRoute(builder: (_) => const CourseSearchPage());
+      case MerchantM3sPage.routeName:
+        if (args is MerchantArgument) {
+          return MaterialPageRoute(
+            builder: (_) => MerchantM3sPage(
+              merchantArgument: args,
+            ),
+          );
+        }
+        return notFoundPage();
       case GraduationPage.routeName:
         if (args is GraduationArgument) {
           return MaterialPageRoute(
