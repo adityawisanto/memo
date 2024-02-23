@@ -27,9 +27,7 @@ class _MerchantM3sPageState extends State<MerchantM3sPage> {
       ..setBackgroundColor(const Color(0x00000000))
       ..setNavigationDelegate(
         NavigationDelegate(
-          onProgress: (int progress) {
-            // Update loading bar.
-          },
+          onProgress: (int progress) {},
           onPageStarted: (String url) {},
           onPageFinished: (String url) {
             setState(() {
@@ -41,7 +39,7 @@ class _MerchantM3sPageState extends State<MerchantM3sPage> {
       )
       ..loadRequest(
         Uri.parse(
-          "https://m3smobile.pcsindonesia.co.id/terminal/search?type=poi&value=${widget.merchantArgument.dataTicket!.poi.toString()}&redirectKey=9825d47843f64d13937dee96e76e0553",
+          "${CustomEnv().env("M3S")}${widget.merchantArgument.dataTicket!.poi.toString()}&redirectKey=${CustomEnv().env("REDIRECT_KEY")}",
         ),
       );
     super.initState();
