@@ -18,6 +18,8 @@ class MerchantM3sPage extends StatefulWidget {
 class _MerchantM3sPageState extends State<MerchantM3sPage> {
   final WebViewController controller = WebViewController();
 
+  bool? loading = true;
+
   @override
   void initState() {
     controller
@@ -29,13 +31,17 @@ class _MerchantM3sPageState extends State<MerchantM3sPage> {
             // Update loading bar.
           },
           onPageStarted: (String url) {},
-          onPageFinished: (String url) {},
+          onPageFinished: (String url) {
+            setState(() {
+              loading = false;
+            });
+          },
           onWebResourceError: (WebResourceError error) {},
         ),
       )
       ..loadRequest(
         Uri.parse(
-          "https://m3smobile.pcsindonesia.co.id/terminal/search?poi=tid&value=${widget.merchantArgument.dataTicket!.poi.toString()}&redirectKey=HkmiP8FuReUPxmPKE5zx",
+          "https://m3smobile.pcsindonesia.co.id/terminal/search?type=poi&value=${widget.merchantArgument.dataTicket!.poi.toString()}&redirectKey=9825d47843f64d13937dee96e76e0553",
         ),
       );
     super.initState();
@@ -48,9 +54,14 @@ class _MerchantM3sPageState extends State<MerchantM3sPage> {
         "M3S Mobile",
         onTap: () => CustomNavigation.back(context),
       ),
-      body: WebViewWidget(
-        controller: controller,
-      ),
+      body: loading == true
+          ? LinearProgressIndicator(
+              color: CustomColorStyle.orangePrimary,
+              backgroundColor: CustomColorStyle.grayPrimary.withOpacity(0.1),
+            )
+          : WebViewWidget(
+              controller: controller,
+            ),
     );
   }
 }
